@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "solitario-game"
+    }
+  },
+  "defaultProject": "solitario-game",
+  "cli": {
+    "analytics": false
+  }
 }
