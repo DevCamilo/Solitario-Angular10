@@ -50,3 +50,19 @@
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+.baraja_top {
+  margin-top: 25px;
+  height: 92px;
+  width: 67px;
+  border: solid 1px #ccc;
+  text-align: center;
+}
+
+.baraja_bottom {
+  margin-top: 25px;
+  height: 92px;
+  width: 67px;
+  border: solid 1px #ccc;
+  text-align: center;
+}

@@ -1,3 +1,157 @@
+<div class="container">
+    <div class="row" id="spac">
+        <div class="col-sm">
+            <div class="baraja_top" style="cursor: pointer;"> <!--Posicion 0-->
+                <img src="../assets/Cartas/0.0Tapada.gif">
+            </div>
+        </div>
+        <div class="col-sm" id="baraja_muestra"> <!--Posicion 1-->
+            <div class="baraja_top" id="pos0">
+            
+            </div>
+        </div>
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm" id="baraja_picas"> <!--Posicion 9-->
+            <div class="baraja_top" id="pos9">
+                <br>
+                ♠
+            </div>
+        </div>
+        <div class="col-sm" id="baraja_diamantes"> <!--Posicion 10-->
+            <div class="baraja_top" id="pos10">
+                <br>
+                ♦
+            </div>
+        </div>
+        <div class="col-sm" id="baraja_corazones"> <!--Posicion 11-->
+            <div class="baraja_top" id="pos11">
+                <br>
+                ♥
+            </div>
+        </div>
+        <div class="col-sm" id="baraja_treboles"><!--Posicion 12-->
+            <div class="baraja_top" id="pos12">
+                <br>
+                ♣
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="baraja_bottom" id="pos2"><!--Posicion 2-->
+                <div>
+                    <div cdkDropList 
+                    #pos2List="cdkDropList"
+                    [cdkDropListConnectedTo]="[]"
+                    cdkDropListSortingDisabled
+                         (cdkDropListDropped)="drop($event)">
+                        <div *ngFor="let item of p2" cdkDrag>
+                        <img src="../assets/Cartas/{{item.name}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="baraja_bottom" id="pos3"><!--Posicion 3-->
+                <div>
+                    <div cdkDropList 
+                    #pos3List="cdkDropList"
+                    [cdkDropListConnectedTo]="[]"
+                    cdkDropListSortingDisabled
+                         (cdkDropListDropped)="drop($event)">
+                        <div *ngFor="let item of p3" cdkDrag>
+                        <img src="../assets/Cartas/{{item.name}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="baraja_bottom" id="pos4"><!--Posicion 4-->
+                <div>
+                    <div cdkDropList 
+                    #pos4List="cdkDropList"
+                    [cdkDropListConnectedTo]="[]"
+                    cdkDropListSortingDisabled
+                         (cdkDropListDropped)="drop($event)">
+                        <div *ngFor="let item of p4" cdkDrag>
+                        <img src="../assets/Cartas/{{item.name}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="baraja_bottom" id="pos5"><!--Posicion 5-->
+                <div>
+                    <div cdkDropList 
+                    #pos5List="cdkDropList"
+                    [cdkDropListConnectedTo]="[]"
+                    cdkDropListSortingDisabled
+                         (cdkDropListDropped)="drop($event)">
+                        <div *ngFor="let item of p5" cdkDrag>
+                        <img src="../assets/Cartas/{{item.name}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="baraja_bottom" id="pos6"><!--Posicion 6-->
+                <div>
+                    <div cdkDropList 
+                    #pos6List="cdkDropList"
+                    [cdkDropListConnectedTo]="[]"
+                    cdkDropListSortingDisabled
+                         (cdkDropListDropped)="drop($event)">
+                        <div *ngFor="let item of p6" cdkDrag>
+                        <img src="../assets/Cartas/{{item.name}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="baraja_bottom" id="pos7"><!--Posicion 7-->
+                <div>
+                    <div cdkDropList 
+                    #pos7List="cdkDropList"
+                    [cdkDropListConnectedTo]="[]"
+                    cdkDropListSortingDisabled
+                         (cdkDropListDropped)="drop($event)">
+                        <div *ngFor="let item of p7" cdkDrag>
+                        <img src="../assets/Cartas/{{item.name}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="baraja_bottom" id="pos8"><!--Posicion 8-->
+                <div>
+                    <div cdkDropList 
+                    #pos8List="cdkDropList"
+                    [cdkDropListConnectedTo]="[]"
+                    cdkDropListSortingDisabled
+                         (cdkDropListDropped)="drop($event)">
+                        <div *ngFor="let item of p8" cdkDrag>
+                        <img src="../assets/Cartas/{{item.name}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
+<!--
 <div class="example-container">
     <h2>Picas</h2>
     <div cdkDropList 
@@ -7,7 +161,7 @@
     cdkDropListSortingDisabled
         class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of picas" cdkDrag>
-            <img src="../assets/Cartas/{{item}}">
+        <img src="../assets/Cartas/{{item.name}}" style="{{item.class}}">
         </div>
     </div>
 </div>
@@ -21,7 +175,7 @@
     cdkDropListSortingDisabled
         class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of corazones" cdkDrag>
-            <img src="../assets/Cartas/{{item}}">
+            <img src="../assets/Cartas/{{item.name}}">
         </div>
     </div>
 </div>
@@ -35,7 +189,7 @@
     cdkDropListSortingDisabled
         class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of diamantes" cdkDrag>
-            <img src="../assets/Cartas/{{item}}">
+            <img src="../assets/Cartas/{{item.name}}">
         </div>
     </div>
 </div>
@@ -49,7 +203,8 @@
     [cdkDropListConnectedTo]="[picasList,corazonesList]"
         class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of treboles" cdkDrag>
-            <img src="../assets/Cartas/{{item}}">
+            <img src="../assets/Cartas/{{item.name}}">
         </div>
     </div>
 </div>
+-->
