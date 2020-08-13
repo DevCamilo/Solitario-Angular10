@@ -78,7 +78,7 @@ export class AppComponent {
   p7 = [];
   p8 = [];
   drop(event: CdkDragDrop<string[]>) {
-    console.log(event);
+    console.log(this.p3);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -112,6 +112,9 @@ export class AppComponent {
       }
       let numCarta = Math.round(Math.random() * (12 - 1) + 1);
       if (currentBaraja[numCarta].selected == false) {
+        if(index != p - 1){
+          currentBaraja[numCarta].cubierta = true;// Cubre las cartas menos la úlitma
+        }
         Arrar.push(currentBaraja[numCarta]);
         index++
         switch (numPalo) {
