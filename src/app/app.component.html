@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row" id="spac">
         <div class="col-sm">
-            <div class="baraja_top" style="cursor: pointer;">
+            <div class="baraja_top" style="cursor: pointer;" (click)="ptempGenerar()">
                 <!--Posicion 0-->
                 <img src="../assets/Cartas/0.0Tapada.gif">
             </div>
@@ -9,7 +9,14 @@
         <div class="col-sm" id="baraja_muestra">
             <!--Posicion 1-->
             <div class="baraja_top" id="pos0">
-
+                <div>
+                    <div cdkDropList #po1List="cdkDropList" [cdkDropListData]="ptemp"  [cdkDropListConnectedTo]="[pos2List,pos3List,pos4List,pos5List,pos6List,pos7List,pos8List]"
+                        (cdkDropListDropped)="drop($event)" cdkDropListSortingDisabled>
+                        <div *ngFor="let item of ptemp">
+                            <img src="../assets/Cartas/{{ptemp[0].name}}" cdkDrag>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-sm">
@@ -56,8 +63,8 @@
                 <div>
                     <div cdkDropList #pos2List="cdkDropList" [cdkDropListData]="p2"  [cdkDropListConnectedTo]="[pos3List,pos4List,pos5List,pos6List,pos7List,pos8List]"
                         (cdkDropListDropped)="drop($event)" cdkDropListSortingDisabled>
-                        <div *ngFor="let item of p2" cdkDrag>
-                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}">
+                        <div *ngFor="let item of p2">
+                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}" cdkDrag>
                             <ng-template #elseBlock><img src="../assets/Cartas/0.0Tapada.gif"></ng-template>
                         </div>
                     </div>
@@ -70,8 +77,8 @@
                 <div>
                     <div cdkDropList #pos3List="cdkDropList" [cdkDropListData]="p3"  [cdkDropListConnectedTo]="[pos2List,pos4List,pos5List,pos6List,pos7List,pos8List]"
                         (cdkDropListDropped)="drop($event)" cdkDropListSortingDisabled>
-                        <div *ngFor="let item of p3" cdkDrag>
-                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}">
+                        <div *ngFor="let item of p3">
+                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}" cdkDrag>
                             <ng-template #elseBlock><img src="../assets/Cartas/0.0Tapada.gif"></ng-template>
                         </div>
                     </div>
@@ -84,8 +91,8 @@
                 <div>
                     <div cdkDropList #pos4List="cdkDropList" [cdkDropListData]="p4" [cdkDropListConnectedTo]="[pos2List,pos3List,pos5List,pos6List,pos7List,pos8List]"
                         (cdkDropListDropped)="drop($event)" cdkDropListSortingDisabled>
-                        <div *ngFor="let item of p4" cdkDrag>
-                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}">
+                        <div *ngFor="let item of p4">
+                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}" cdkDrag>
                             <ng-template #elseBlock><img src="../assets/Cartas/0.0Tapada.gif"></ng-template>
                         </div>
                     </div>
@@ -98,8 +105,8 @@
                 <div>
                     <div cdkDropList #pos5List="cdkDropList" [cdkDropListData]="p5" [cdkDropListConnectedTo]="[pos2List,pos3List,pos4List,pos6List,pos7List,pos8List]"
                         (cdkDropListDropped)="drop($event)" cdkDropListSortingDisabled>
-                        <div *ngFor="let item of p5" cdkDrag>
-                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}">
+                        <div *ngFor="let item of p5">
+                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}" cdkDrag>
                             <ng-template #elseBlock><img src="../assets/Cartas/0.0Tapada.gif"></ng-template>
                         </div>
                     </div>
@@ -112,8 +119,8 @@
                 <div>
                     <div cdkDropList #pos6List="cdkDropList" [cdkDropListData]="p6" [cdkDropListConnectedTo]="[pos2List,pos3List,pos4List,pos5List,pos7List,pos8List]"
                         (cdkDropListDropped)="drop($event)">
-                        <div *ngFor="let item of p6" cdkDrag>
-                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}">
+                        <div *ngFor="let item of p6" >
+                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}" cdkDrag>
                             <ng-template #elseBlock><img src="../assets/Cartas/0.0Tapada.gif"></ng-template>
                         </div>
                     </div>
@@ -126,8 +133,8 @@
                 <div>
                     <div cdkDropList #pos7List="cdkDropList" [cdkDropListData]="p7" [cdkDropListConnectedTo]="[pos2List,pos3List,pos4List,pos5List,pos6List,pos8List]"
                         (cdkDropListDropped)="drop($event)">
-                        <div *ngFor="let item of p7" cdkDrag>
-                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}">
+                        <div *ngFor="let item of p7">
+                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}" cdkDrag>
                             <ng-template #elseBlock><img src="../assets/Cartas/0.0Tapada.gif"></ng-template>
                         </div>
                     </div>
@@ -140,8 +147,8 @@
                 <div>
                     <div cdkDropList #pos8List="cdkDropList" [cdkDropListData]="p8" [cdkDropListConnectedTo]="[pos2List,pos3List,pos4List,pos5List,pos7List,pos6List]"
                         (cdkDropListDropped)="drop($event)">
-                        <div *ngFor="let item of p8" cdkDrag>
-                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}">
+                        <div *ngFor="let item of p8">
+                            <img *ngIf="!item.cubierta; else elseBlock" src="../assets/Cartas/{{item.name}}" cdkDrag>
                             <ng-template #elseBlock><img src="../assets/Cartas/0.0Tapada.gif"></ng-template>
                         </div>
                     </div>
