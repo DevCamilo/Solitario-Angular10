@@ -83,8 +83,8 @@ export class AppComponent implements OnInit {
   ptemp = [];
   picaAs = [{ name: 'simbolPicas.PNG', cubierta: false, selected: false, value: 0, color: 'Negro' }];
   diamonAs = [{ name: 'simbolDiamon.PNG', cubierta: false, selected: false, value: 0, color: 'Rojo' }];
-  coraAs = [{ name: 'simbolPicas.PNG', cubierta: false, selected: false, value: 0, color: 'Negro' }];
-  trebolAs = [{ name: 'simbolPicas.PNG', cubierta: false, selected: false, value: 0, color: 'Negro' }];
+  coraAs = [{ name: 'simbolHeart.PNG', cubierta: false, selected: false, value: 0, color: 'Rojo' }];
+  trebolAs = [{ name: 'simbolTrebol.PNG', cubierta: false, selected: false, value: 0, color: 'Negro' }];
   drop(event: any) {
     //console.log(event.previousContainer.id);//Capura el id de la lista anterior
     //console.log(event.container.id);//Capura el id de la lista nueva
@@ -110,20 +110,53 @@ export class AppComponent implements OnInit {
         (event.previousContainer.data.length - 1),
         (event.container.data.length));
     }
-    if((event.container.id == "cdk-drop-list-1") && (event.previousContainer.data[event.previousContainer.data.length - 1].palo == "Picas")){
-        this.picaAs[0] = event.previousContainer.data[event.previousContainer.data.length - 1];
-        if (event.previousContainer.data[event.previousContainer.data.length - 2]) { // Se valida si existe esa poscicion
-          event.previousContainer.data[event.previousContainer.data.length - 2].cubierta = false; // Descubre la anterior carta de la posicion de orgen
-        }
-        transferArrayItem(event.previousContainer.data,
-          event.container.data,
-          (event.previousContainer.data.length - 1),
-          (event.container.data.length));
-          this.picaAs.pop();
+    if ((event.container.id == "cdk-drop-list-1") && (event.previousContainer.data[event.previousContainer.data.length - 1].palo == "Picas")) { // Se valida la posición del As
+      this.picaAs[0] = event.previousContainer.data[event.previousContainer.data.length - 1];
+      if (event.previousContainer.data[event.previousContainer.data.length - 2]) { // Se valida si existe esa poscicion
+        event.previousContainer.data[event.previousContainer.data.length - 2].cubierta = false; // Descubre la anterior carta de la posicion de orgen
+      }
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        (event.previousContainer.data.length - 1),
+        (event.container.data.length));
+      this.picaAs.pop();
+    }
+    if ((event.container.id == "cdk-drop-list-2") && (event.previousContainer.data[event.previousContainer.data.length - 1].palo == "Diamantes")) {
+      this.diamonAs[0] = event.previousContainer.data[event.previousContainer.data.length - 1];
+      if (event.previousContainer.data[event.previousContainer.data.length - 2]) { // Se valida si existe esa poscicion
+        event.previousContainer.data[event.previousContainer.data.length - 2].cubierta = false; // Descubre la anterior carta de la posicion de orgen
+      }
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        (event.previousContainer.data.length - 1),
+        (event.container.data.length));
+      this.diamonAs.pop();
+    }
+    if ((event.container.id == "cdk-drop-list-3") && (event.previousContainer.data[event.previousContainer.data.length - 1].palo == "Corazones")) {
+      this.corazones[0] = event.previousContainer.data[event.previousContainer.data.length - 1];
+      if (event.previousContainer.data[event.previousContainer.data.length - 2]) { // Se valida si existe esa poscicion
+        event.previousContainer.data[event.previousContainer.data.length - 2].cubierta = false; // Descubre la anterior carta de la posicion de orgen
+      }
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        (event.previousContainer.data.length - 1),
+        (event.container.data.length));
+      this.coraAs.pop();
+    }
+    if ((event.container.id == "cdk-drop-list-4") && (event.previousContainer.data[event.previousContainer.data.length - 1].palo == "Treboles")) {
+      this.trebolAs[0] = event.previousContainer.data[event.previousContainer.data.length - 1];
+      if (event.previousContainer.data[event.previousContainer.data.length - 2]) { // Se valida si existe esa poscicion
+        event.previousContainer.data[event.previousContainer.data.length - 2].cubierta = false; // Descubre la anterior carta de la posicion de orgen
+      }
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        (event.previousContainer.data.length - 1),
+        (event.container.data.length));
+      this.trebolAs.pop();
     }
   }
 
-  generatePos(p) {
+  generatePos(p, chose) {
     let currentBaraja = [];
     let Arrar = [];
     for (let index = 0; index < p;) {
@@ -146,8 +179,10 @@ export class AppComponent implements OnInit {
       }
       let numCarta = Math.round(Math.random() * (12 - 0) + 0);
       if (currentBaraja[numCarta].selected == false) { // Elige aleatoriamente un numero del palo de carta
-        if (index != p - 1) {
-          currentBaraja[numCarta].cubierta = true;// Cubre las cartas menos la úlitma
+        if (chose) {
+          if (index != p - 1) {
+            currentBaraja[numCarta].cubierta = true;// Cubre las cartas menos la úlitma
+          }
         }
         Arrar.push(currentBaraja[numCarta]); // Añade esa carta al arreglo de cartas
         index++
@@ -172,25 +207,25 @@ export class AppComponent implements OnInit {
     return Arrar;
   }
 
-  ptempGenerar(){
-    if(this.cont >= this.p0.length){
+  ptempGenerar() {
+    if (this.cont >= this.p0.length) {
       this.cont = 0;
     } else {
       this.ptemp[0] = this.p0[this.cont];
       this.cont += 1;
     }
-    
+
   }
 
   ngOnInit() {
     // Genera aleatoriamente las posciones
-    this.p2 = this.generatePos(1);
-    this.p3 = this.generatePos(2);
-    this.p4 = this.generatePos(3);
-    this.p5 = this.generatePos(4);
-    this.p6 = this.generatePos(5);
-    this.p7 = this.generatePos(6);
-    this.p8 = this.generatePos(7);
-    this.p0 = this.generatePos(10);
+    this.p2 = this.generatePos(1, true);
+    this.p3 = this.generatePos(2, true);
+    this.p4 = this.generatePos(3, true);
+    this.p5 = this.generatePos(4, true);
+    this.p6 = this.generatePos(5, true);
+    this.p7 = this.generatePos(6, true);
+    this.p8 = this.generatePos(7, true);
+    this.p0 = this.generatePos(15, false);
   }
 }
