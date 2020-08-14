@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   cont = 0; // Variable conytador para gerer las carats de la pocicion 1
   //Arreglo de las cartas
   picas = [
-    { name: '1.AsPicas.gif', cubierta: false, selected: false, value: 1, color: 'Negro' },
+    { name: '1.AsPicas.gif', cubierta: false, selected: false, value: 1, color: 'Negro', palo: 'Picas' },
     { name: '2.2Picas.gif', cubierta: false, selected: false, value: 2, color: 'Negro' },
     { name: '3.3Picas.gif', cubierta: false, selected: false, value: 3, color: 'Negro' },
     { name: '4.4Picas.gif', cubierta: false, selected: false, value: 4, color: 'Negro' },
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     { name: '13.KPicas.gif', cubierta: false, selected: false, value: 13, color: 'Negro' }
   ];
   corazones = [
-    { name: '1.AsCorazones.gif', cubierta: false, selected: false, value: 1, color: 'Rojo' },
+    { name: '1.AsCorazones.gif', cubierta: false, selected: false, value: 1, color: 'Rojo', palo: 'Corazones' },
     { name: '2.2Corazones.gif', cubierta: false, selected: false, value: 2, color: 'Rojo' },
     { name: '3.3Corazones.gif', cubierta: false, selected: false, value: 3, color: 'Rojo' },
     { name: '4.4Corazones.gif', cubierta: false, selected: false, value: 4, color: 'Rojo' },
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
     { name: '13.KCorazones.gif', cubierta: false, selected: false, value: 13, color: 'Rojo' }
   ];
   treboles = [
-    { name: '1.AsTreboles.gif', cubierta: false, selected: false, value: 1, color: 'Negro' },
+    { name: '1.AsTreboles.gif', cubierta: false, selected: false, value: 1, color: 'Negro', palo: 'Treboles' },
     { name: '2.2Treboles.gif', cubierta: false, selected: false, value: 2, color: 'Negro' },
     { name: '3.3Treboles.gif', cubierta: false, selected: false, value: 3, color: 'Negro' },
     { name: '4.4Treboles.gif', cubierta: false, selected: false, value: 4, color: 'Negro' },
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
     { name: '13.KTreboles.gif', cubierta: false, selected: false, value: 13, color: 'Negro' }
   ];
   diamantes = [
-    { name: '1.AsDiamantes.gif', cubierta: false, selected: false, value: 1, color: 'Rojo' },
+    { name: '1.AsDiamantes.gif', cubierta: false, selected: false, value: 1, color: 'Rojo', palo: 'Diamantes' },
     { name: '2.2Diamantes.gif', cubierta: false, selected: false, value: 2, color: 'Rojo' },
     { name: '3.3Diamantes.gif', cubierta: false, selected: false, value: 3, color: 'Rojo' },
     { name: '4.4Diamantes.gif', cubierta: false, selected: false, value: 4, color: 'Rojo' },
@@ -81,6 +81,10 @@ export class AppComponent implements OnInit {
   p7 = [];
   p8 = [];
   ptemp = [];
+  picaAs = [{ name: 'simbolPicas.PNG', cubierta: false, selected: false, value: 0, color: 'Negro' }];
+  diamonAs = [{ name: 'simbolDiamon.PNG', cubierta: false, selected: false, value: 0, color: 'Rojo' }];
+  coraAs = [{ name: 'simbolPicas.PNG', cubierta: false, selected: false, value: 0, color: 'Negro' }];
+  trebolAs = [{ name: 'simbolPicas.PNG', cubierta: false, selected: false, value: 0, color: 'Negro' }];
   drop(event: any) {
     //console.log(event.previousContainer.id);//Capura el id de la lista anterior
     //console.log(event.container.id);//Capura el id de la lista nueva
@@ -105,6 +109,17 @@ export class AppComponent implements OnInit {
         event.container.data,
         (event.previousContainer.data.length - 1),
         (event.container.data.length));
+    }
+    if((event.container.id == "cdk-drop-list-1") && (event.previousContainer.data[event.previousContainer.data.length - 1].palo == "Picas")){
+        this.picaAs[0] = event.previousContainer.data[event.previousContainer.data.length - 1];
+        if (event.previousContainer.data[event.previousContainer.data.length - 2]) { // Se valida si existe esa poscicion
+          event.previousContainer.data[event.previousContainer.data.length - 2].cubierta = false; // Descubre la anterior carta de la posicion de orgen
+        }
+        transferArrayItem(event.previousContainer.data,
+          event.container.data,
+          (event.previousContainer.data.length - 1),
+          (event.container.data.length));
+          this.picaAs.pop();
     }
   }
 
